@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "LGUniversalPlaceholder"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.license      = 'MIT'
   s.summary      = "Universal iOS placeholder with pixel perfect centered components (image or spinner or/and title or/and button)."
   s.homepage     = "https://github.com/Letsgood/LGUniversalPlaceholder"

@@ -62,7 +62,7 @@
     titleTextColor = [UIColor colorWithRed:179.0f/255.0f green:179.0f/255.0f blue:179.0f/255.0f alpha:1.0f];
     buttonColor = [UIColor colorWithRed:140.0f/255.0f green:140.0f/255.0f blue:140.0f/255.0f alpha:1.0f];
     graphicColor = [UIColor colorWithRed:179.0f/255.0f green:179.0f/255.0f blue:179.0f/255.0f alpha:1.0f];
-
+    
     // Text size
     titleTextSize = 16;
     buttonTextSize = 16;
@@ -234,9 +234,9 @@
 -(id) initWithSpinnerAndTitle:(NSString *)text toView:(UIView *)mainView
 {
     self = [super initWithFrame: CGRectMake(0, 0, mainView.bounds.size.width, mainView.bounds.size.height)];
-
+    
     [self setDefaults];
-
+    
     [self initComponentSpinner];
     [self initComponentTitle:text];
     
@@ -363,13 +363,13 @@
     CGFloat lastComponentOriginY    = 0;
     CGFloat frameCenterX            = self.frame.size.width/2;
     id graphic; // Representing inserted graphic – icon or spinner or nil
-
+    
     
     if (icon) graphic = icon;
     else if (spinner) graphic = spinner;
     else graphic = nil;
     
-   
+    
     // Calculate position for components
     if (graphic && title && button)
     {
@@ -451,7 +451,9 @@
     self.hidden = NO;
     
     if(spinner)
-       [spinner startAnimating];
+        [spinner startAnimating];
+    
+    [self.superview setUserInteractionEnabled:YES];
 }
 
 
@@ -461,6 +463,8 @@
     
     if(spinner)
         [spinner stopAnimating];
+    
+    [self.superview setUserInteractionEnabled:NO];
 }
 
 
@@ -514,7 +518,12 @@
 -(void) setGraphicColor:(UIColor *)color
 {
     graphicColor = color;
-    [icon setTintColor: graphicColor];
+    
+    if (icon)
+        [icon setTintColor: graphicColor];
+    if(spinner)
+        [spinner setColor:graphicColor];
+    
     [self setNeedsDisplay];
 }
 
@@ -523,8 +532,9 @@
 {
     if (button) {
         [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+        [button setUserInteractionEnabled:YES];
     }
-
+    
 }
 
 
