@@ -58,7 +58,8 @@
 -(void) setDefaults
 {
     // Colors
-    self.backgroundColor = [UIColor colorWithRed:250.0f/255.0f green:250.0f/255.0f blue:250.0f/255.0f alpha:1.0f];
+    //self.backgroundColor = [UIColor colorWithRed:250.0f/255.0f green:250.0f/255.0f blue:250.0f/255.0f alpha:1.0f];
+	self.backgroundColor = [UIColor whiteColor];
     titleTextColor = [UIColor colorWithRed:179.0f/255.0f green:179.0f/255.0f blue:179.0f/255.0f alpha:1.0f];
     buttonColor = [UIColor colorWithRed:140.0f/255.0f green:140.0f/255.0f blue:140.0f/255.0f alpha:1.0f];
     graphicColor = [UIColor colorWithRed:179.0f/255.0f green:179.0f/255.0f blue:179.0f/255.0f alpha:1.0f];
@@ -69,8 +70,41 @@
     
     // Max size of frame for title
     titleMaxSize = CGSizeMake(LGContentMaxWidth, 200);
+	
+	_customSubclassing = NO;
 }
 
+-(id) initClearToView:(UIView *)mainView {
+	self = [super initWithFrame: CGRectMake(0, 0, mainView.bounds.size.width, mainView.bounds.size.height)];
+    
+    [self setDefaults];
+    
+	[self setBackgroundColor:[UIColor clearColor]];
+	
+    // Add to parrent view
+    [mainView addSubview: self];
+    
+    // Hidden as default
+    [self hide];
+    
+    return (id)self;
+}
+
+-(id) initBlankToView:(UIView *)mainView {
+	self = [super initWithFrame: CGRectMake(0, 0, mainView.bounds.size.width, mainView.bounds.size.height)];
+    
+    [self setDefaults];
+    
+    [self repositionComponents];
+    
+    // Add to parrent view
+    [mainView addSubview: self];
+    
+    // Hidden as default
+    [self hide];
+    
+    return (id)self;
+}
 
 -(id) initWithImage:(UIImage *)image toView:(UIView *)mainView
 {
@@ -113,7 +147,7 @@
 -(id) initWithTitle:(NSString *)text toView:(UIView *)mainView
 {
     self = [super initWithFrame: CGRectMake(0, 0, mainView.bounds.size.width, mainView.bounds.size.height)];
-    
+    NSLog(@"Creating Placehold with Rect::%@", NSStringFromCGRect(CGRectMake(0, 0, mainView.bounds.size.width, mainView.bounds.size.height)));
     [self setDefaults];
     
     [self initComponentTitle:text];
@@ -303,9 +337,12 @@
 
 -(void) initComponentSpinner
 {
-    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [spinner setColor: graphicColor];
-    [self addSubview:spinner];
+    if (_customSubclassing) [self subclassResponsibility:_cmd];
+	else {
+		spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		[spinner setColor: graphicColor];
+		[self addSubview:spinner];
+	}
 }
 
 -(void) initComponentTitle:(NSString *)text
@@ -464,7 +501,7 @@
     if(spinner)
         [spinner stopAnimating];
     
-    [self.superview setUserInteractionEnabled:NO];
+    [self.superview setUserInteractionEnabled:YES];
 }
 
 

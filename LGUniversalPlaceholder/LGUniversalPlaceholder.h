@@ -21,6 +21,7 @@
 //SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import "NSObject+Abstract.h"
 
 const static CGFloat LGFirstMargin = 15.0f;
 const static CGFloat LGSecondMargin = 20.0f;
@@ -30,7 +31,10 @@ const static CGFloat LGContentMaxWidth = 280.0f;
 
 @interface LGUniversalPlaceholder : UIView
 
+@property (nonatomic) BOOL customSubclassing;
 
+-(id) initClearToView:(UIView *)mainView;
+-(id) initBlankToView:(UIView *)mainView;
 /**
  *  Initializes and returns newly allocated placeholder object with specified components.
  *
