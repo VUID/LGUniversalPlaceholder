@@ -161,6 +161,12 @@ const static CGFloat LGContentMaxWidth = 280.0f;
  */
 -(void) hide;
 
+/**
+ *  Sets the views title
+ *
+ *  @param string of new title
+ */
+-(void) setTitle:(NSString *)newTitle;
 
 /**
  *  Sets system font size for title.

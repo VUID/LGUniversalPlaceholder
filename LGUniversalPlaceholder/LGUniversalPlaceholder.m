@@ -82,7 +82,7 @@
 	[self setBackgroundColor:[UIColor clearColor]];
 	
     // Add to parrent view
-    [mainView addSubview: self];
+    [mainView addSubview:self];
     
     // Hidden as default
     [self hide];
@@ -98,7 +98,7 @@
     [self repositionComponents];
     
     // Add to parrent view
-    [mainView addSubview: self];
+    [mainView addSubview:self];
     
     // Hidden as default
     [self hide];
@@ -117,7 +117,7 @@
     [self repositionComponents];
     
     // Add to parrent view
-    [mainView addSubview: self];
+    [mainView addSubview:self];
     
     // Hidden as default
     [self hide];
@@ -136,8 +136,9 @@
     [self repositionComponents];
     
     // Add to parrent view
-    [mainView addSubview: self];
-    
+    //[mainView addSubview:self];
+    [mainView insertSubview:self atIndex:0];
+	
     // Hidden as default
     [self hide];
     
@@ -155,7 +156,7 @@
     [self repositionComponents];
     
     // Add to parrent view
-    [mainView addSubview: self];
+    [mainView addSubview:self];
     
     // Hidden as default
     [self hide];
@@ -174,7 +175,7 @@
     [self repositionComponents];
     
     // Add to parrent view
-    [mainView addSubview: self];
+    [mainView addSubview:self];
     
     // Hidden as default
     [self hide];
@@ -195,7 +196,7 @@
     [self repositionComponents];
     
     // Add to parrent view
-    [mainView addSubview: self];
+    [mainView addSubview:self];
     
     // Hidden as default
     [self hide];
@@ -215,7 +216,7 @@
     [self repositionComponents];
     
     // Add to parrent view
-    [mainView addSubview: self];
+    [mainView addSubview:self];
     
     // Hidden as default
     [self hide];
@@ -235,7 +236,7 @@
     [self repositionComponents];
     
     // Add to parrent view
-    [mainView addSubview: self];
+    [mainView addSubview:self];
     
     // Hidden as default
     [self hide];
@@ -256,7 +257,7 @@
     [self repositionComponents];
     
     // Add to parrent view
-    [mainView addSubview: self];
+    [mainView addSubview:self];
     
     // Hidden as default
     [self hide];
@@ -277,7 +278,7 @@
     [self repositionComponents];
     
     // Add to parrent view
-    [mainView addSubview: self];
+    [mainView addSubview:self];
     
     // Hidden as default
     [self hide];
@@ -297,7 +298,7 @@
     [self repositionComponents];
     
     // Add to parrent view
-    [mainView addSubview: self];
+    [mainView addSubview:self];
     
     // Hidden as default
     [self hide];
@@ -318,7 +319,7 @@
     [self repositionComponents];
     
     // Add to parrent view
-    [mainView addSubview: self];
+    [mainView addSubview:self];
     
     // Hidden as default
     [self hide];
@@ -504,7 +505,10 @@
     [self.superview setUserInteractionEnabled:YES];
 }
 
-
+-(void) setTitle:(NSString *)newTitle
+{
+	title.text = newTitle;
+}
 
 -(void) setTitleTextSize:(CGFloat)size
 {
